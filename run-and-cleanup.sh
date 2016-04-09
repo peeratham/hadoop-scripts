@@ -1,8 +1,24 @@
 #Hadoop job setup
 
+#make sure not to execute in hslogin1
+host=$(hostname)
+
+loginHost="hslogin1"
+if [ "$host" == "$loginHost" ]; then
+        echo "Cannot execute in" $loginHost
+        exit 1
+fi
+
+echo "Start execution"
+
 #Make sure everything is stop before new launch
 ${HADOOP_HOME}/sbin/stop-dfs.sh
 ${HADOOP_HOME}/sbin/stop-yarn.sh
+
+#Archive last analysis result
+lastAnalysis=$(cat ${HOME}/output/result/log)
+mv ${HOME}/output/result ${HOME}/output/$lastAnalysis
+mv ${HOME}/output/$lastAnalysis ${HOME}/output/temp/
 
 
 #hdfs namenode -format
@@ -17,18 +33,17 @@ hdfs dfs -rm /user/tpeera4/input/saved_progress.properties
 hdfs dfs -mkdir /user/tpeera4/output
 hdfs dfs -mkdir /tmp
 
-
-hadoop jar ${HOME}/projects/mranalysis/target/mranalysis-1.0-job.jar input output/001
+hadoop jar ${HOME}/projects/mranalysis/target/mranalysis-1.0-job.jar input output/result
 
 #Copy to Local
-hdfs dfs -copyToLocal /user/tpeera4/output/001 ${HOME}/output/
+hdfs dfs -copyToLocal /user/tpeera4/output/result ${HOME}/output/
 
 #Archive
 d="$(date '+%Y-%m-%d--%H-%M-%S')"
-mv ${HOME}/output/001 ${HOME}/output/temp/$d
+echo $d >> ${HOME}/output/result/log
 
 #Clean up
-hdfs dfs -rm -r /user/tpeera4/output/001
+hdfs dfs -rm -r /user/tpeera4/output/result
 
 
 #Stop Hadoop
