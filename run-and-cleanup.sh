@@ -16,16 +16,20 @@ ${HADOOP_HOME}/sbin/stop-dfs.sh
 ${HADOOP_HOME}/sbin/stop-yarn.sh
 
 #Archive last analysis result
+if [ -d "${HOME}/output/result" ]; then
 lastAnalysis=$(cat ${HOME}/output/result/log)
 mv ${HOME}/output/result ${HOME}/output/$lastAnalysis
 mv ${HOME}/output/$lastAnalysis ${HOME}/output/temp/
+fi
 
-
-#hdfs namenode -format
+echo "DON'T FORGET TO FORMAT NAMENODE ON FIRST USE"
+#hdfs namenode -format"
 ${HADOOP_HOME}/sbin/start-dfs.sh
 ${HADOOP_HOME}/sbin/start-yarn.sh
 
-hdfs dfs -rm -R /user
+ 
+hdfs dfs -rm -R /user/tpeera4/input
+hdfs dfs -rm -R /user/tpeera4/output
 
 hdfs dfs -mkdir -p /user/tpeera4/input
 hdfs dfs -put ${HOME}/input/* /user/tpeera4/input
