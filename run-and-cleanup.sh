@@ -27,6 +27,9 @@ echo "DON'T FORGET TO FORMAT NAMENODE ON FIRST USE"
 ${HADOOP_HOME}/sbin/start-dfs.sh
 ${HADOOP_HOME}/sbin/start-yarn.sh
 
+#prevent safemode problem
+hdfs dfsadmin -safemode leave
+
  
 hdfs dfs -rm -R /user/tpeera4/input
 hdfs dfs -rm -R /user/tpeera4/output
