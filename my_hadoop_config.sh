@@ -5,8 +5,8 @@ echo ":::update master node info:::"
 
 hadoop_config_dir="$HOME/hadoop-configuration-kwang"
 
-master_node_before="hs039"
-master_node_after="hs135"
+master_node_before="hs135"
+master_node_after="hs119"
 
 
 sed -Ei "s|${master_node_before}|${master_node_after}|" ${hadoop_config_dir}/mapred-site.xml
@@ -27,8 +27,8 @@ echo ":::update slave node info:::"
 
 
 slave_nodes=(
-"hs137"
-"hs127"
+"hs111"
+"hs105"
 )
 
 #clear old info
