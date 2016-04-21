@@ -1,4 +1,3 @@
-$HADOOP_HOME/sbin/start-all.sh
-hdfs dfs -ls -R /
-$HADOOP_HOME/sbin/stop-all.sh
+source /home/tpeera4/projects/scripts/configs/hadoop-cluster.conf
+ssh ${master} 'hdfs dfs -ls -R /'
 

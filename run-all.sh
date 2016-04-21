@@ -8,9 +8,11 @@ if [ "$host" != "$loginHost" ]; then
 	exit 1
 fi
 
-/home/tpeera4/projects/scripts/crawler-start.sh
+/home/tpeera4/projects/scripts/cleanup-input.sh
 
-ssh ${master} '/home/tpeera4/projects/scripts/run-and-cleanup.sh'
+/home/tpeera4/projects/scripts/export-input-sources.sh
+
+ssh ${master} '/home/tpeera4/projects/scripts/run-hadoop-analysis-new-data.sh'
 
 /home/tpeera4/projects/scripts/save-analysis-to-db.sh
 
@@ -19,3 +21,4 @@ ssh ${master} '/home/tpeera4/projects/scripts/run-and-cleanup.sh'
 /home/tpeera4/projects/scripts/run-pyspark-analysis-script.sh
 
 /home/tpeera4/projects/scripts/save-to-dropbox.sh
+

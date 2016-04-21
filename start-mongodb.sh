@@ -1,1 +1,1 @@
-mongod --config $HOME/projects/scripts/configs/mongod.conf
+mongod --config $HOME/projects/scripts/configs/mongod.conf &

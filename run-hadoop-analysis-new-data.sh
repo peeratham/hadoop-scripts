@@ -11,9 +11,6 @@ fi
 
 echo "Start execution"
 
-#Make sure everything is stop before new launch
-${HADOOP_HOME}/sbin/stop-dfs.sh
-${HADOOP_HOME}/sbin/stop-yarn.sh
 
 #Archive last analysis result
 if [ -d "${HOME}/output/result" ]; then
@@ -23,10 +20,6 @@ mv ${HOME}/output/$lastAnalysis ${HOME}/output/temp/
 fi
 
 echo "DON'T FORGET TO FORMAT NAMENODE ON FIRST USE"
-#hdfs namenode -format"
-${HADOOP_HOME}/sbin/start-dfs.sh
-${HADOOP_HOME}/sbin/start-yarn.sh
-
 #prevent safemode problem
 hdfs dfsadmin -safemode leave
 
@@ -40,7 +33,7 @@ hdfs dfs -rm /user/tpeera4/input/saved_progress.properties
 hdfs dfs -mkdir /user/tpeera4/output
 hdfs dfs -mkdir /tmp
 
-hadoop jar ${HOME}/projects/mranalysis/target/mranalysis-1.0-job.jar input output/result
+hadoop jar ${HOME}/projects/mranalysis2/target/mranalysis2-1.0-job.jar input output/result
 
 #Copy to Local
 hdfs dfs -copyToLocal /user/tpeera4/output/result ${HOME}/output/
@@ -53,6 +46,3 @@ echo $d >> ${HOME}/output/result/log
 hdfs dfs -rm -r /user/tpeera4/output/result
 
 
-#Stop Hadoop
-${HADOOP_HOME}/sbin/stop-dfs.sh
-${HADOOP_HOME}/sbin/stop-yarn.sh
