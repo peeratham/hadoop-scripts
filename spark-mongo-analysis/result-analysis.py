@@ -69,3 +69,6 @@ fo.truncate()
 fo.write(percentage_smell_pdf.to_latex())
 fo.close()
 
+
+#shutdown Spark
+sc.stop()
