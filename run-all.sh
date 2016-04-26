@@ -8,9 +8,9 @@ if [ "$host" != "$loginHost" ]; then
 	exit 1
 fi
 
-/home/tpeera4/projects/scripts/cleanup-input.sh
+#/home/tpeera4/projects/scripts/cleanup-input.sh
 
-/home/tpeera4/projects/scripts/export-input-sources.sh
+#/home/tpeera4/projects/scripts/export-input-sources.sh
 
 ssh ${master} '/home/tpeera4/projects/scripts/run-hadoop-analysis-new-data.sh'
 
