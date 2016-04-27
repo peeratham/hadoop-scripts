@@ -10,5 +10,5 @@ spark-submit \
 --deploy-mode client \
 --py-files /home/tpeera4/projects/scripts/pymongo_spark.py \
 --driver-class-path /home/tpeera4/hadoop/share/hadoop/mapreduce/mongo-hadoop-spark-1.5.2.jar \
-/home/tpeera4/projects/scripts/spark-mongo-analysis/result-analysis.py
+/home/tpeera4/projects/scripts/spark-mongo-analysis/result-analysis-2.py
 
