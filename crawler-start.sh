@@ -8,5 +8,5 @@
 java -cp ${HOME}/projects/data-manager/target/datamanager-1.0-standalone.jar \
 -DlogDir="/home/tpeera4/logs/" \
 cs.vt.analysis.datamanager.main.DatasetCrawl2 \
--n 150000 -db analysis -h hslogin1
+-n 160000 -db analysis -h hslogin1
 

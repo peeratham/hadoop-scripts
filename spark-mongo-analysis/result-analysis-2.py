@@ -21,7 +21,7 @@ def write_latex(pdf, filename):
 sc = SparkContext(appName="ResultAnalysis")
 sqlContext = SQLContext(sc)
 
-dbname = 'experiment'
+dbname = 'analysis'
 # get reports
 reports_rdd = sc.mongoRDD('mongodb://hslogin1:27017/'+dbname+'.reports')
 reports_df = sqlContext.createDataFrame(reports_rdd)

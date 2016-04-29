@@ -1,10 +1,13 @@
+source /home/tpeera4/projects/scripts/configs/analysis-variables.conf
 
 echo metadata
-mongo analysis --host hslogin1 --eval "db.metadata.count()"
+mongo $dbname --host hslogin1 --eval "db.metadata.count()"
 echo reports
-mongo analysis --host hslogin1 --eval "db.reports.count()"
+mongo $dbname --host hslogin1 --eval "db.reports.count()"
+echo metrics
+mongo $dbname --host hslogin1 --eval "db.metrics.count()"
 echo creators
-mongo analysis --host hslogin1 --eval "db.creators.count()"
+mongo $dbname --host hslogin1 --eval "db.creators.count()"
 echo sources
-mongo analysis --host hslogin1 --eval "db.sources.count()"
+mongo $dbname --host hslogin1 --eval "db.sources.count()"
 
