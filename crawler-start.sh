@@ -4,9 +4,10 @@
 #java -cp ${HOME}/projects/data-manager/target/datamanager-1.0-standalone.jar cs.vt.analysis.datamanager.main.DatasetCrawl2 -n 10 -db analysis -h hslogin1
 
 #-n : 150000 to be safe
+source $HOME/projects/scripts/configs/analysis-variables.conf
 
 java -cp ${HOME}/projects/data-manager/target/datamanager-1.0-standalone.jar \
 -DlogDir="/home/tpeera4/logs/" \
-cs.vt.analysis.datamanager.main.DatasetCrawl2 \
--n 160000 -db analysis -h hslogin1
+vt.cs.smells.datamanager.main.DatasetCrawl2 \
+-n 100000 -db $dbname -h hslogin1
 
